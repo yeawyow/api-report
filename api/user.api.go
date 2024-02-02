@@ -9,10 +9,10 @@ import (
 )
 
 func setupUserAPI(router *gin.Engine) {
-	authenAPI := router.Group("/api/v2")
+	authenAPI := router.Group("/api")
 	{
 
-		authenAPI.POST("/edituser", edituser)
+		authenAPI.GET("/", hompage)
 		authenAPI.POST("/getuser", interceptor.JwtVerify, getuser)
 	}
 }
@@ -23,6 +23,7 @@ func getuser(c *gin.Context) {
 	c.JSON(200, gin.H{"data": employee})
 }
 
-func edituser(c *gin.Context) {
-	c.JSON(200, gin.H{"stus": "ok"})
+func hompage(c *gin.Context) {
+	//fmt.Println("test")
+	c.JSON(200, gin.H{"stus": "ok1"})
 }
